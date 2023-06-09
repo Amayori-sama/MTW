@@ -26,3 +26,4 @@ C:\Users\vlad-\OneDrive\Рабочий стол\LBGKJV\проект\MTW\MTW\obj\
 C:\Users\vlad-\OneDrive\Рабочий стол\LBGKJV\проект\MTW\MTW\obj\Debug\MTW_Content.g.cs
 C:\Users\vlad-\OneDrive\Рабочий стол\LBGKJV\проект\MTW\MTW\obj\Debug\Warehouse\Pages\WarehouseProducts.g.cs
 C:\Users\vlad-\OneDrive\Рабочий стол\LBGKJV\проект\MTW\MTW\obj\Debug\Warehouse\Pages\WarehouseProducts.baml
+C:\Users\vlad-\OneDrive\Рабочий стол\LBGKJV\проект\MTW\MTW\obj\Debug\MTW.csproj.AssemblyReference.cache

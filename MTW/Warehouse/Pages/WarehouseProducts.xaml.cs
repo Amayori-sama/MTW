@@ -23,6 +23,7 @@ namespace MTW.Warehouse.Pages
             DlgLoad(false, "");
             ManufacturerComboBox.ItemsSource = SourceCore.db.manufacturers.ToList();
             ModelComboBox.ItemsSource = SourceCore.db.models.ToList();
+            UpdateGrid(null);
         }
 
         private void LoadingProd(object sender, RoutedEventArgs e)

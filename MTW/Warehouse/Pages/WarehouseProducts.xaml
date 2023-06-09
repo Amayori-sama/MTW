@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:MTW.Warehouse.Pages"
       mc:Ignorable="d"
       Title="Склад товаров" Height="450" Width="800" Loaded="LoadingProd">
-    <Grid Background="Transparent" Margin="0,0,0,-143">
+    <Grid Margin="0,0,0,-143">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MTW.Warehouse"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Склад товаров" Height="450" Width="1200" Background="Transparent">
+        Title="Склад товаров" Height="450" Width="1200" >
     <Grid>
         <Grid MaxWidth="1280">
 
