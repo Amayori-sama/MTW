@@ -1,0 +1,20 @@
+﻿<Window x:Class="MTW.MainWindows.WelcomeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MTW.MainWindows"
+        mc:Ignorable="d"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Title="WelcomeWindow" Height="250" Width="500">
+    <Grid>       
+	    <Grid.Background>
+            <ImageBrush ImageSource="/images/welcome.jpg"/>
+        </Grid.Background> 
+        <Label HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Black" FontSize="50" Margin="0,30,0,0" Content="Добро пожаловать"/>
+        <Button x:Name="AuthBtn" Content="Редактирование" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" Click="AuthBtn_Click"/>
+        <Button x:Name="SeeBtn" Content="Просмотр товаров" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10" Click="SeeBtn_Click"/>
+    </Grid>
+</Window>
