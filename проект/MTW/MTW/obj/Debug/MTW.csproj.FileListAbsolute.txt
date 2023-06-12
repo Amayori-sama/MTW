@@ -56,3 +56,4 @@ C:\Users\vlad-\OneDrive\Рабочий стол\MTW\проект\MTW\MTW\obj\Deb
 C:\Users\vlad-\OneDrive\Рабочий стол\MTW\проект\MTW\MTW\obj\Debug\MTW.exe
 C:\Users\vlad-\OneDrive\Рабочий стол\MTW\проект\MTW\MTW\obj\Debug\MTW.pdb
 C:\Users\vlad-\OneDrive\Рабочий стол\MTW\проект\MTW\MTW\obj\Debug\App.baml
+C:\Users\vlad-\OneDrive\Рабочий стол\MTW\проект\MTW\MTW\obj\Debug\MTW.csproj.AssemblyReference.cache
