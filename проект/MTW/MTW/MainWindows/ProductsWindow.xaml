@@ -4,11 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MTW.MainWindows"
-        mc:Ignorable="d"        
-        ResizeMode="NoResize"
+        mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Просмотр товаров" Height="450" Width="800">
-    <Grid>
         
+        Title="Просмотр товаров" MinHeight="720" MinWidth="1280" Height="720" Width="1280">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/images/welcome.jpg" Opacity="0.5"/>
+        </Grid.Background>
+
+        <Frame x:Name="PagePlace"/>
     </Grid>
 </Window>
