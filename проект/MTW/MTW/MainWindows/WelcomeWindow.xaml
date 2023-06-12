@@ -8,13 +8,32 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        Title="WelcomeWindow" Height="250" Width="500">
-    <Grid>       
-	    <Grid.Background>
-            <ImageBrush ImageSource="/images/welcome.jpg"/>
-        </Grid.Background> 
-        <Label HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Black" FontSize="50" Margin="0,30,0,0" Content="Добро пожаловать"/>
-        <Button x:Name="AuthBtn" Content="Редактирование" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" Click="AuthBtn_Click"/>
-        <Button x:Name="SeeBtn" Content="Просмотр товаров" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10" Click="SeeBtn_Click"/>
+        Title="WelcomeWindow" Height="400" Width="700">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/images/welcome.jpg" Opacity="0.5"/>
+        </Grid.Background>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Purple" FontSize="70" Margin="0,50,0,0" Content="Добро пожаловать"/>
+        <Button Style="{StaticResource MainBtn}" x:Name="AuthBtn" Content="Редактирование" FontSize="20"
+                VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="200" Height="80" Margin="0,0,80,80" Click="AuthBtn_Click">
+            <Button.ToolTip>
+                <ToolTip Width="300" Height="100" Background="Transparent" BorderBrush="Transparent" VerticalContentAlignment="Top" FontSize="18" FontWeight="DemiBold">
+                    <StackPanel>
+                        <TextBlock Text="Доступ к авторизации" Foreground="Purple"/>
+                    </StackPanel>
+                </ToolTip>
+            </Button.ToolTip>
+        </Button>
+        <Button Style="{StaticResource MainBtn}" x:Name="SeeBtn" Content="Просмотр товаров" FontSize="20"
+                VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="200" Height="80" Margin="80,0,0,80" Click="SeeBtn_Click">
+            <Button.ToolTip>
+                <ToolTip Width="300" Height="100" Background="Transparent" BorderBrush="Transparent" VerticalContentAlignment="Top" FontSize="18" FontWeight="DemiBold">
+                    <StackPanel>
+                        <TextBlock Text="Просмотр товаров без " Foreground="Purple"/>
+                        <TextBlock Text="возможности изменения данных" Foreground="Purple"/>
+                    </StackPanel>
+                </ToolTip>
+            </Button.ToolTip>
+        </Button>
     </Grid>
 </Window>

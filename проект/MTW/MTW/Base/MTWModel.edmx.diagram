@@ -4,14 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="95932a3c34a9465296ee1ddba2b78a65" Name="Diagram1">
-        <EntityTypeShape EntityType="MTWModel.sysdiagrams" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MTWModel.users" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MTWModel.manufacturers" Width="1.5" PointX="0.75" PointY="4.5" />
-        <EntityTypeShape EntityType="MTWModel.models" Width="1.5" PointX="0.75" PointY="7.5" />
-        <EntityTypeShape EntityType="MTWModel.products" Width="1.5" PointX="3" PointY="4" />
-        <AssociationConnector Association="MTWModel.FK_products_manufacturers" />
-        <AssociationConnector Association="MTWModel.FK_products_models" />
+      <Diagram DiagramId="e17f6fc9215748f9b2ad8b9ef208c756" Name="Diagram1">
+        <EntityTypeShape EntityType="MTWModel.countrys" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MTWModel.manufacturers" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MTWModel.models" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MTWModel.places" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MTWModel.products" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MTWModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MTWModel.types" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MTWModel.users" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="MTWModel.FK_manufacturers_countrys" ManuallyRouted="false" />
+        <AssociationConnector Association="MTWModel.FK_products_manufacturers" ManuallyRouted="false" />
+        <AssociationConnector Association="MTWModel.FK_products_models" ManuallyRouted="false" />
+        <AssociationConnector Association="MTWModel.FK_products_places" ManuallyRouted="false" />
+        <AssociationConnector Association="MTWModel.FK_products_types" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

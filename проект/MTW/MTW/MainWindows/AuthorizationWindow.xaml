@@ -8,44 +8,75 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
-        Title="Авторизация" Height="400" Width="400">
+        Title="Авторизация" Height="300" Width="450">
     <Grid x:Name="AutorizMainGrid">
+        <Grid.Background>
+            <ImageBrush ImageSource="/images/welcome.jpg" Opacity="0.6"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
             <RowDefinition Height="20*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="30"/>
             <ColumnDefinition Width="250*"/>
-            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="30"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-
-        <StackPanel Grid.Column="1" Grid.Row="1" >
-            <Label Content="Логин" Margin ="0,0,0,-5" FontFamily="Segoe UI" FontSize="20"
-                       Grid.Column="0" Grid.Row="0" Foreground="#FFFF"/>
-            <DockPanel HorizontalAlignment="Stretch" Margin="0">
-                <TextBox x:Name="LoginText" Margin="5" Grid.Column="1" Grid.Row="0"
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <Label Content="Введите логин" Margin ="0,0,0,-5" FontFamily="Segoe UI" FontSize="20"
+                       Grid.Column="0" Grid.Row="0" Foreground="#FFFF" HorizontalContentAlignment="Center"/>
+            <DockPanel Width="200" Margin="0" >
+                <TextBox x:Name="LoginText" Margin="5"
                              VerticalContentAlignment="Center" Padding="0,5,0,5" FontSize="16" 
-                             TextAlignment="Center"/>
+                             TextAlignment="Center" BorderBrush="Magenta" CaretBrush="Aqua" Cursor="Pen" 
+                             Foreground="RoyalBlue"/>
             </DockPanel>
 
-            <Label Content="Пароль" Margin="0,0,0,-5" FontSize="20" Grid.Column="0" Grid.Row="1" 
-                       Foreground="#FFFF"/>
-            <DockPanel HorizontalAlignment="Stretch" Margin="0">
-                <TextBox x:Name="PasswordText" Margin="5" Grid.Column="1" Grid.Row="1" 
+            <Label Content="Введите пароль" Margin="0,0,0,-5" FontSize="20" Grid.Column="0" Grid.Row="1" 
+                       Foreground="#FFFF" HorizontalContentAlignment="Center"/>
+            <DockPanel  Width="200" Margin="0">
+                <TextBox x:Name="PasswordText" Margin="5" 
                              VerticalContentAlignment="Center" Padding="0,5,0,5" FontSize="16" 
-                             TextAlignment="Center"/>
+                             TextAlignment="Center" BorderBrush="Magenta" CaretBrush="Aqua" Cursor="Pen" 
+                             Foreground="RoyalBlue"/>
             </DockPanel>
 
-            <StackPanel Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" 
-                            HorizontalAlignment="Right" Margin="0,40,0,0">
-                <Button x:Name="AuthCommitBtn" Content="Войти" 
-                            Height="35" Width="100" Margin="15,0,40,0" Click="AuthCommit"/>
-                <Button x:Name="AuthRollBackBtn" Content="Отмена"
-                            Height="35" Width="100" Margin="15,0,15,0" Click="AuthRollBack"/>
-            </StackPanel>
+            <DockPanel Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Margin="10,30,10,0">
+                <Button Style="{StaticResource MainBtn}" x:Name="AuthCommitBtn" Content="Войти" HorizontalAlignment="Left"
+                            FontSize="20" Height="50" Width="120" Click="AuthCommit">
+                    <Button.ToolTip>
+                        <ToolTip Width="300" Height="100" Background="Transparent" BorderBrush="Transparent" VerticalContentAlignment="Top" FontSize="18" FontWeight="DemiBold">
+                            <StackPanel>
+                                <TextBlock Text="Редактируйте внимательно!" Foreground="Azure"/>
+                            </StackPanel>
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+                <Button Style="{StaticResource MainBtn}" x:Name="AuthRollBackBtn" Content="Отмена" HorizontalAlignment="Right"
+                            FontSize="20" Height="50" Width="120"  Click="AuthRollBack">
+                    <Button.ToolTip>
+                        <ToolTip Width="300" Height="100" Background="Transparent" BorderBrush="Transparent" VerticalContentAlignment="Top" FontSize="18" FontWeight="DemiBold">
+                            <StackPanel>
+                                <TextBlock Text="Вернуться к главному окну" Foreground="White"/>
+                            </StackPanel>
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+            </DockPanel>          
+        </StackPanel>
+        <StackPanel Grid.Column="2" Grid.Row="1">
+            <Button Content="?" Style="{StaticResource MainBtn}">
+                <Button.ToolTip>
+                    <ToolTip Width="250" Height="100" Background="Transparent" BorderBrush="Transparent" VerticalContentAlignment="Top" FontSize="15">
+                        <StackPanel>
+                            <TextBlock Text="Логин и пароль выдаются " Foreground="White"/>
+                            <TextBlock Text="Администратором базы данных" Foreground="White"/>
+                        </StackPanel>
+                    </ToolTip>
+                </Button.ToolTip>
+            </Button>            
         </StackPanel>
     </Grid>
 </Window>

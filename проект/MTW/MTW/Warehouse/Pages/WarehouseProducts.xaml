@@ -40,6 +40,7 @@
                   CanUserAddRows="False" RowBackground="#fafafa" HorizontalGridLinesBrush="#060722" VerticalGridLinesBrush="#060722"
                   Background="Transparent" Margin="0, 0, 10, 0">
             <DataGrid.Columns>
+                <DataGridTextColumn Foreground="#060722" Header="Тип" Binding="{Binding Path=types.name}" Width="10*"/>
                 <DataGridTextColumn Foreground="#060722" Header="Модель" Binding="{Binding Path=models.name}" Width="10*"/>
                 <DataGridTextColumn Foreground="#060722" Header="Название" Binding="{Binding Path=name}" Width="10*"/>
                 <DataGridTextColumn Foreground="#060722"  Header="Производитель" Binding="{Binding Path=manufacturers.name}" Width="10*"/>

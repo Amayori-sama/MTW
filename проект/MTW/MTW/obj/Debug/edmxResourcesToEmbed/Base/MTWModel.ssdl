@@ -1,14 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="MTWModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="countrys">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="250" />
+  </EntityType>
   <EntityType Name="manufacturers">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="nvarchar" MaxLength="250" />
-    <Property Name="country" Type="nvarchar" MaxLength="50" />
+    <Property Name="countryId" Type="int" />
   </EntityType>
   <EntityType Name="models">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="year" Type="int" />
+  </EntityType>
+  <EntityType Name="places">
     <Key>
       <PropertyRef Name="id" />
     </Key>
@@ -20,12 +35,19 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="typeId" Type="int" />
     <Property Name="modelId" Type="int" />
     <Property Name="name" Type="nvarchar" MaxLength="250" />
     <Property Name="description" Type="nvarchar(max)" />
+    <Property Name="manufacturerId" Type="int" />
     <Property Name="cost" Type="money" />
     <Property Name="count" Type="int" />
-    <Property Name="manufacturerId" Type="int" />
+    <Property Name="weight" Type="float" />
+    <Property Name="height" Type="float" />
+    <Property Name="width" Type="float" />
+    <Property Name="length" Type="float" />
+    <Property Name="image" Type="image" />
+    <Property Name="placeId" Type="int" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -37,6 +59,13 @@
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
+  <EntityType Name="types">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="250" />
+  </EntityType>
   <EntityType Name="users">
     <Key>
       <PropertyRef Name="id" />
@@ -44,8 +73,19 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="login" Type="nvarchar" MaxLength="50" />
     <Property Name="password" Type="nvarchar" MaxLength="50" />
-    <Property Name="name" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <Association Name="FK_manufacturers_countrys">
+    <End Role="countrys" Type="Self.countrys" Multiplicity="0..1" />
+    <End Role="manufacturers" Type="Self.manufacturers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="countrys">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="manufacturers">
+        <PropertyRef Name="countryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_products_manufacturers">
     <End Role="manufacturers" Type="Self.manufacturers" Multiplicity="0..1" />
     <End Role="products" Type="Self.products" Multiplicity="*" />
@@ -70,18 +110,57 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_products_places">
+    <End Role="places" Type="Self.places" Multiplicity="0..1" />
+    <End Role="products" Type="Self.products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="places">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="products">
+        <PropertyRef Name="placeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_products_types">
+    <End Role="types" Type="Self.types" Multiplicity="0..1" />
+    <End Role="products" Type="Self.products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="types">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="products">
+        <PropertyRef Name="typeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="MTWModelStoreContainer">
+    <EntitySet Name="countrys" EntityType="Self.countrys" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="manufacturers" EntityType="Self.manufacturers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="models" EntityType="Self.models" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="places" EntityType="Self.places" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="types" EntityType="Self.types" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_manufacturers_countrys" Association="Self.FK_manufacturers_countrys">
+      <End Role="countrys" EntitySet="countrys" />
+      <End Role="manufacturers" EntitySet="manufacturers" />
+    </AssociationSet>
     <AssociationSet Name="FK_products_manufacturers" Association="Self.FK_products_manufacturers">
       <End Role="manufacturers" EntitySet="manufacturers" />
       <End Role="products" EntitySet="products" />
     </AssociationSet>
     <AssociationSet Name="FK_products_models" Association="Self.FK_products_models">
       <End Role="models" EntitySet="models" />
+      <End Role="products" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_products_places" Association="Self.FK_products_places">
+      <End Role="places" EntitySet="places" />
+      <End Role="products" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_products_types" Association="Self.FK_products_types">
+      <End Role="types" EntitySet="types" />
       <End Role="products" EntitySet="products" />
     </AssociationSet>
   </EntityContainer>

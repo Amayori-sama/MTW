@@ -29,7 +29,7 @@ namespace MTW.Warehouse.Pages
         private void LoadingProd(object sender, RoutedEventArgs e)
         {
             List<string> Columns = new List<string>();
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 5; i++)
             {
                 Columns.Add(PageGrid.Columns[i].Header.ToString());
             }

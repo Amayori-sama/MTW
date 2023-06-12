@@ -4,6 +4,35 @@
              xmlns:local="clr-namespace:MTW"
              StartupUri="MainWindows/WelcomeWindow.xaml">
     <Application.Resources>
-         
+        <Style x:Key="MainBtn" TargetType="{x:Type Button}">
+            <Setter Property="Control.FontFamily" Value="Roboto" />
+            <Setter Property="Control.Background" Value="#FF0AF354" />
+            <Setter Property="Control.Foreground" Value="#060722" />
+            <Setter Property="Control.FontSize" Value="14" />
+            <Setter Property="Control.FontWeight" Value="Medium"/>
+            <Setter Property="Control.BorderThickness" Value="0"/>
+            <Setter Property="Control.Padding" Value="5, 5, 5, 5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border CornerRadius="5" Background="{TemplateBinding Background}">
+                            <Grid>
+                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" Margin="{TemplateBinding Padding}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF9CF1B7" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#FF1CB90C" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        
     </Application.Resources>
 </Application>

@@ -15,14 +15,23 @@ namespace MTW.Base
     public partial class products
     {
         public int id { get; set; }
+        public Nullable<int> typeId { get; set; }
         public Nullable<int> modelId { get; set; }
         public string name { get; set; }
         public string description { get; set; }
+        public Nullable<int> manufacturerId { get; set; }
         public Nullable<decimal> cost { get; set; }
         public Nullable<int> count { get; set; }
-        public Nullable<int> manufacturerId { get; set; }
+        public Nullable<double> weight { get; set; }
+        public Nullable<double> height { get; set; }
+        public Nullable<double> width { get; set; }
+        public Nullable<double> length { get; set; }
+        public byte[] image { get; set; }
+        public Nullable<int> placeId { get; set; }
     
         public virtual manufacturers manufacturers { get; set; }
         public virtual models models { get; set; }
+        public virtual places places { get; set; }
+        public virtual types types { get; set; }
     }
 }

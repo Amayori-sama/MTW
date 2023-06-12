@@ -87,6 +87,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ActionsWithPictures.cs" />
+    <Compile Include="Base\countrys.cs">
+      <DependentUpon>MTWModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Base\manufacturers.cs">
       <DependentUpon>MTWModel.tt</DependentUpon>
     </Compile>
@@ -108,10 +111,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MTWModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Base\places.cs">
+      <DependentUpon>MTWModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Base\products.cs">
       <DependentUpon>MTWModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Base\sysdiagrams.cs">
+      <DependentUpon>MTWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Base\types.cs">
       <DependentUpon>MTWModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Base\users.cs">

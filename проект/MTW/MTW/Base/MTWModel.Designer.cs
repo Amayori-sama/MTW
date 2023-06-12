@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\vlad-\OneDrive\Рабочий стол\LBGKJV\проект\MTW\MTW\Base\MTWModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\vlad-\OneDrive\Рабочий стол\MTW\проект\MTW\MTW\Base\MTWModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

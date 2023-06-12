@@ -22,8 +22,9 @@ namespace MTW.Base
     
         public int id { get; set; }
         public string name { get; set; }
-        public string country { get; set; }
+        public Nullable<int> countryId { get; set; }
     
+        public virtual countrys countrys { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<products> products { get; set; }
     }

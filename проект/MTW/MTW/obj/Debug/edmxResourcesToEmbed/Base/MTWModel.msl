@@ -1,6 +1,60 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="MTWModelStoreContainer" CdmEntityContainer="MTWEntities">
+    <EntitySetMapping Name="countrys">
+      <EntityTypeMapping TypeName="MTWModel.countrys">
+        <MappingFragment StoreEntitySet="countrys">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="manufacturers">
+      <EntityTypeMapping TypeName="MTWModel.manufacturers">
+        <MappingFragment StoreEntitySet="manufacturers">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="countryId" ColumnName="countryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="models">
+      <EntityTypeMapping TypeName="MTWModel.models">
+        <MappingFragment StoreEntitySet="models">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="year" ColumnName="year" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="places">
+      <EntityTypeMapping TypeName="MTWModel.places">
+        <MappingFragment StoreEntitySet="places">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="MTWModel.products">
+        <MappingFragment StoreEntitySet="products">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="typeId" ColumnName="typeId" />
+          <ScalarProperty Name="modelId" ColumnName="modelId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="manufacturerId" ColumnName="manufacturerId" />
+          <ScalarProperty Name="cost" ColumnName="cost" />
+          <ScalarProperty Name="count" ColumnName="count" />
+          <ScalarProperty Name="weight" ColumnName="weight" />
+          <ScalarProperty Name="height" ColumnName="height" />
+          <ScalarProperty Name="width" ColumnName="width" />
+          <ScalarProperty Name="length" ColumnName="length" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="placeId" ColumnName="placeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
       <EntityTypeMapping TypeName="MTWModel.sysdiagrams">
         <MappingFragment StoreEntitySet="sysdiagrams">
@@ -12,43 +66,20 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="types">
+      <EntityTypeMapping TypeName="MTWModel.types">
+        <MappingFragment StoreEntitySet="types">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="users">
       <EntityTypeMapping TypeName="MTWModel.users">
         <MappingFragment StoreEntitySet="users">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="login" ColumnName="login" />
           <ScalarProperty Name="password" ColumnName="password" />
-          <ScalarProperty Name="name" ColumnName="name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="manufacturers">
-      <EntityTypeMapping TypeName="MTWModel.manufacturers">
-        <MappingFragment StoreEntitySet="manufacturers">
-          <ScalarProperty Name="country" ColumnName="country" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="models">
-      <EntityTypeMapping TypeName="MTWModel.models">
-        <MappingFragment StoreEntitySet="models">
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="products">
-      <EntityTypeMapping TypeName="MTWModel.products">
-        <MappingFragment StoreEntitySet="products">
-          <ScalarProperty Name="manufacturerId" ColumnName="manufacturerId" />
-          <ScalarProperty Name="count" ColumnName="count" />
-          <ScalarProperty Name="cost" ColumnName="cost" />
-          <ScalarProperty Name="description" ColumnName="description" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="modelId" ColumnName="modelId" />
-          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

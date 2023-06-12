@@ -25,10 +25,13 @@ namespace MTW.Base
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<users> users { get; set; }
+        public virtual DbSet<countrys> countrys { get; set; }
         public virtual DbSet<manufacturers> manufacturers { get; set; }
         public virtual DbSet<models> models { get; set; }
+        public virtual DbSet<places> places { get; set; }
         public virtual DbSet<products> products { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<types> types { get; set; }
+        public virtual DbSet<users> users { get; set; }
     }
 }

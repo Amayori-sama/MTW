@@ -1,5 +1,63 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="MTWModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="countrys">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="manufacturers" Relationship="Self.FK_manufacturers_countrys" FromRole="countrys" ToRole="manufacturers" />
+  </EntityType>
+  <EntityType Name="manufacturers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="countryId" Type="Int32" />
+    <NavigationProperty Name="countrys" Relationship="Self.FK_manufacturers_countrys" FromRole="manufacturers" ToRole="countrys" />
+    <NavigationProperty Name="products" Relationship="Self.FK_products_manufacturers" FromRole="manufacturers" ToRole="products" />
+  </EntityType>
+  <EntityType Name="models">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="year" Type="Int32" />
+    <NavigationProperty Name="products" Relationship="Self.FK_products_models" FromRole="models" ToRole="products" />
+  </EntityType>
+  <EntityType Name="places">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="products" Relationship="Self.FK_products_places" FromRole="places" ToRole="products" />
+  </EntityType>
+  <EntityType Name="products">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="typeId" Type="Int32" />
+    <Property Name="modelId" Type="Int32" />
+    <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="manufacturerId" Type="Int32" />
+    <Property Name="cost" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="count" Type="Int32" />
+    <Property Name="weight" Type="Double" />
+    <Property Name="height" Type="Double" />
+    <Property Name="width" Type="Double" />
+    <Property Name="length" Type="Double" />
+    <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="placeId" Type="Int32" />
+    <NavigationProperty Name="manufacturers" Relationship="Self.FK_products_manufacturers" FromRole="products" ToRole="manufacturers" />
+    <NavigationProperty Name="models" Relationship="Self.FK_products_models" FromRole="products" ToRole="models" />
+    <NavigationProperty Name="places" Relationship="Self.FK_products_places" FromRole="products" ToRole="places" />
+    <NavigationProperty Name="types" Relationship="Self.FK_products_types" FromRole="products" ToRole="types" />
+  </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
       <PropertyRef Name="diagram_id" />
@@ -10,6 +68,14 @@
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
+  <EntityType Name="types">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="products" Relationship="Self.FK_products_types" FromRole="types" ToRole="products" />
+  </EntityType>
   <EntityType Name="users">
     <Key>
       <PropertyRef Name="id" />
@@ -17,57 +83,22 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityContainer Name="MTWEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-    <EntitySet Name="users" EntityType="Self.users" />
-    <EntitySet Name="manufacturers" EntityType="MTWModel.manufacturers" />
-    <EntitySet Name="models" EntityType="MTWModel.models" />
-    <EntitySet Name="products" EntityType="MTWModel.products" />
-    <AssociationSet Name="FK_products_manufacturers" Association="MTWModel.FK_products_manufacturers">
-      <End Role="manufacturers" EntitySet="manufacturers" />
-      <End Role="products" EntitySet="products" />
-    </AssociationSet>
-    <AssociationSet Name="FK_products_models" Association="MTWModel.FK_products_models">
-      <End Role="models" EntitySet="models" />
-      <End Role="products" EntitySet="products" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="manufacturers">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="products" Relationship="MTWModel.FK_products_manufacturers" FromRole="manufacturers" ToRole="products" />
-  </EntityType>
-  <EntityType Name="models">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="products" Relationship="MTWModel.FK_products_models" FromRole="models" ToRole="products" />
-  </EntityType>
-  <EntityType Name="products">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="modelId" Type="Int32" />
-    <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="cost" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="count" Type="Int32" />
-    <Property Name="manufacturerId" Type="Int32" />
-    <NavigationProperty Name="manufacturers" Relationship="MTWModel.FK_products_manufacturers" FromRole="products" ToRole="manufacturers" />
-    <NavigationProperty Name="models" Relationship="MTWModel.FK_products_models" FromRole="products" ToRole="models" />
-  </EntityType>
+  <Association Name="FK_manufacturers_countrys">
+    <End Role="countrys" Type="Self.countrys" Multiplicity="0..1" />
+    <End Role="manufacturers" Type="Self.manufacturers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="countrys">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="manufacturers">
+        <PropertyRef Name="countryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_products_manufacturers">
-    <End Type="MTWModel.manufacturers" Role="manufacturers" Multiplicity="0..1" />
-    <End Type="MTWModel.products" Role="products" Multiplicity="*" />
+    <End Role="manufacturers" Type="Self.manufacturers" Multiplicity="0..1" />
+    <End Role="products" Type="Self.products" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="manufacturers">
         <PropertyRef Name="id" />
@@ -78,8 +109,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_products_models">
-    <End Type="MTWModel.models" Role="models" Multiplicity="0..1" />
-    <End Type="MTWModel.products" Role="products" Multiplicity="*" />
+    <End Role="models" Type="Self.models" Multiplicity="0..1" />
+    <End Role="products" Type="Self.products" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="models">
         <PropertyRef Name="id" />
@@ -89,4 +120,58 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_products_places">
+    <End Role="places" Type="Self.places" Multiplicity="0..1" />
+    <End Role="products" Type="Self.products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="places">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="products">
+        <PropertyRef Name="placeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_products_types">
+    <End Role="types" Type="Self.types" Multiplicity="0..1" />
+    <End Role="products" Type="Self.products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="types">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="products">
+        <PropertyRef Name="typeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MTWEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="countrys" EntityType="Self.countrys" />
+    <EntitySet Name="manufacturers" EntityType="Self.manufacturers" />
+    <EntitySet Name="models" EntityType="Self.models" />
+    <EntitySet Name="places" EntityType="Self.places" />
+    <EntitySet Name="products" EntityType="Self.products" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="types" EntityType="Self.types" />
+    <EntitySet Name="users" EntityType="Self.users" />
+    <AssociationSet Name="FK_manufacturers_countrys" Association="Self.FK_manufacturers_countrys">
+      <End Role="countrys" EntitySet="countrys" />
+      <End Role="manufacturers" EntitySet="manufacturers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_products_manufacturers" Association="Self.FK_products_manufacturers">
+      <End Role="manufacturers" EntitySet="manufacturers" />
+      <End Role="products" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_products_models" Association="Self.FK_products_models">
+      <End Role="models" EntitySet="models" />
+      <End Role="products" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_products_places" Association="Self.FK_products_places">
+      <End Role="places" EntitySet="places" />
+      <End Role="products" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_products_types" Association="Self.FK_products_types">
+      <End Role="types" EntitySet="types" />
+      <End Role="products" EntitySet="products" />
+    </AssociationSet>
+  </EntityContainer>
 </Schema>
