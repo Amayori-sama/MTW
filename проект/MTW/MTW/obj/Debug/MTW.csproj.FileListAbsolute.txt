@@ -56,4 +56,13 @@ C:\Users\vlad-\OneDrive\Рабочий стол\MTW\проект\MTW\MTW\obj\Deb
 C:\Users\vlad-\OneDrive\Рабочий стол\MTW\проект\MTW\MTW\obj\Debug\MTW.exe
 C:\Users\vlad-\OneDrive\Рабочий стол\MTW\проект\MTW\MTW\obj\Debug\MTW.pdb
 C:\Users\vlad-\OneDrive\Рабочий стол\MTW\проект\MTW\MTW\obj\Debug\App.baml
-C:\Users\vlad-\OneDrive\Рабочий стол\MTW\проект\MTW\MTW\obj\Debug\MTW.csproj.AssemblyReference.cache
+C:\Users\vlad-\OneDrive\Рабочий стол\MTW\проект\MTW\MTW\obj\Debug\Warehouse\Pages\WarehouseUsers.g.cs
+C:\Users\vlad-\OneDrive\Рабочий стол\MTW\проект\MTW\MTW\obj\Debug\Warehouse\Pages\WarehouseCountrys.g.cs
+C:\Users\vlad-\OneDrive\Рабочий стол\MTW\проект\MTW\MTW\obj\Debug\Warehouse\Pages\WarehouseManufactures.g.cs
+C:\Users\vlad-\OneDrive\Рабочий стол\MTW\проект\MTW\MTW\obj\Debug\Warehouse\Pages\WarehouseModels.g.cs
+C:\Users\vlad-\OneDrive\Рабочий стол\MTW\проект\MTW\MTW\obj\Debug\Warehouse\Pages\WarehouseTypes.g.cs
+C:\Users\vlad-\OneDrive\Рабочий стол\MTW\проект\MTW\MTW\obj\Debug\Warehouse\Pages\WarehouseUsers.baml
+C:\Users\vlad-\OneDrive\Рабочий стол\MTW\проект\MTW\MTW\obj\Debug\Warehouse\Pages\WarehouseCountrys.baml
+C:\Users\vlad-\OneDrive\Рабочий стол\MTW\проект\MTW\MTW\obj\Debug\Warehouse\Pages\WarehouseManufactures.baml
+C:\Users\vlad-\OneDrive\Рабочий стол\MTW\проект\MTW\MTW\obj\Debug\Warehouse\Pages\WarehouseModels.baml
+C:\Users\vlad-\OneDrive\Рабочий стол\MTW\проект\MTW\MTW\obj\Debug\Warehouse\Pages\WarehouseTypes.baml

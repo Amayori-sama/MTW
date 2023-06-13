@@ -6,13 +6,49 @@
         xmlns:local="clr-namespace:MTW.MainWindows"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        
+        Loaded="LoadingProd"
         Title="Просмотр товаров" MinHeight="720" MinWidth="1280" Height="720" Width="1280">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/images/welcome.jpg" Opacity="0.5"/>
         </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="53*"/>
+            <ColumnDefinition x:Name="ColumnChange" Width="270"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="28"/>
+            <RowDefinition Height="22"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,-0.333,10" Grid.RowSpan="2">
+            <ComboBox x:Name="FilterComboBox" Width="150" Height="30" />
+            <TextBox x:Name="FilterTextBox" Margin="5,0,5,0" Width="170" Height="30" TextChanged="FilterTextBox_TextChanged"/>
+        </StackPanel>
+
+        <DataGrid Grid.Row="3" Grid.Column="0" x:Name="PageGrid" BorderBrush="Transparent" AutoGenerateColumns="False" IsReadOnly="True"
+                  CanUserAddRows="False" RowBackground="#fafafa" HorizontalGridLinesBrush="#060722" VerticalGridLinesBrush="#060722"
+                  Background="Transparent" Margin="0, 0, 10, 0" Grid.ColumnSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Foreground="#060722" Header="Тип" Binding="{Binding Path=types.name}" Width="10*"/>
+                <DataGridTextColumn Foreground="#060722" Header="Модель" Binding="{Binding Path=models.name}" Width="10*"/>
+                <DataGridTextColumn Foreground="#060722" Header="Название" Binding="{Binding Path=name}" Width="10*"/>
+                <DataGridTextColumn Foreground="#060722" Header="Описание" Binding="{Binding Path=description}" Width="10*"/>
+                <DataGridTextColumn Foreground="#060722"  Header="Производитель" Binding="{Binding Path=manufacturers.name}" Width="10*"/>
+                <DataGridTextColumn Foreground="#060722" Header="Цена" Binding="{Binding Path=cost}" Width="10*"/>
+                <DataGridTextColumn Foreground="#060722" Header="Кол-во,шт." Binding="{Binding Path=count}" Width="10*"/>
+                <DataGridTextColumn Foreground="#060722" Header="Вес,кг" Binding="{Binding Path=weight}" Width="10*"/>
+                <DataGridTextColumn Foreground="#060722" Header="Высота,мм" Binding="{Binding Path=height}" Width="10*"/>
+                <DataGridTextColumn Foreground="#060722" Header="Ширина,мм" Binding="{Binding Path=width}" Width="10*"/>
+                <DataGridTextColumn Foreground="#060722" Header="Длина,мм" Binding="{Binding Path=length}" Width="10*"/>
+                <DataGridTextColumn Foreground="#060722" Header="Место" Binding="{Binding Path=places.name}" Width="10*"/>
+                <DataGridTextColumn Foreground="#060722" Header="Фото" Binding="{Binding Path=image}" Width="10*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        
         <Frame x:Name="PagePlace"/>
     </Grid>
 </Window>

@@ -5,30 +5,32 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MTW.Warehouse.Pages"
       mc:Ignorable="d"
-      Title="Склад товаров" Height="450" Width="800" Loaded="LoadingProd">
-    <Grid Margin="0,0,0,-143">
-
+      
+      Title="Склад товаров" Loaded="LoadingProd">
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition x:Name="ColumnChange" Width="250"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="53*"/>
+            <ColumnDefinition x:Name="ColumnChange" Width="270"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="0"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="28"/>
+            <RowDefinition Height="22"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" VerticalAlignment="Center">
-            <Button x:Name="RecordAdd" Content="Добавить" 
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,-0.333,10" Grid.RowSpan="2">
+            <Button  Style="{StaticResource MainBtn}" x:Name="RecordAdd" Content="Добавить" 
                      Margin="5,5,0,5"
                     Click="RecordAdd_Click"/>
-            <Button x:Name="RecordCopy" Content="Копировать" 
+            <Button Style="{StaticResource MainBtn}" x:Name="RecordCopy" Content="Копировать" 
                      Margin="5,5,0,5"
                     Click="RecordkCopy_Click"/>
-            <Button x:Name="RecordEdit" Content="Изменить" 
+            <Button Style="{StaticResource MainBtn}" x:Name="RecordEdit" Content="Изменить" 
                      Margin="5,5,0,5"
                     Click="RecordEdit_Click"/>
-            <Button x:Name="RecordDellete" Content="Удалить" 
+            <Button Style="{StaticResource MainBtn}"  x:Name="RecordDellete" Content="Удалить" 
                      Margin="5,5,0,5"
                     Click="RecordDelete_Click"/>
             <Rectangle Width="3" Height="30" Fill="#fafafa" Margin="20, 0, 20, 0"></Rectangle>
@@ -36,56 +38,96 @@
             <TextBox x:Name="FilterTextBox" Margin="5,0,5,0" Width="170" Height="30" TextChanged="FilterTextBox_TextChanged"/>
         </StackPanel>
 
-        <DataGrid Grid.Row="2" Grid.Column="0" x:Name="PageGrid" BorderBrush="Transparent" AutoGenerateColumns="False" IsReadOnly="True"
+        <DataGrid Grid.Row="3" Grid.Column="0" x:Name="PageGrid" BorderBrush="Transparent" AutoGenerateColumns="False" IsReadOnly="True"
                   CanUserAddRows="False" RowBackground="#fafafa" HorizontalGridLinesBrush="#060722" VerticalGridLinesBrush="#060722"
-                  Background="Transparent" Margin="0, 0, 10, 0">
+                  Background="Transparent" Margin="0, 0, 10, 0" Grid.ColumnSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Foreground="#060722" Header="Тип" Binding="{Binding Path=types.name}" Width="10*"/>
                 <DataGridTextColumn Foreground="#060722" Header="Модель" Binding="{Binding Path=models.name}" Width="10*"/>
                 <DataGridTextColumn Foreground="#060722" Header="Название" Binding="{Binding Path=name}" Width="10*"/>
-                <DataGridTextColumn Foreground="#060722"  Header="Производитель" Binding="{Binding Path=manufacturers.name}" Width="10*"/>
                 <DataGridTextColumn Foreground="#060722" Header="Описание" Binding="{Binding Path=description}" Width="10*"/>
+                <DataGridTextColumn Foreground="#060722"  Header="Производитель" Binding="{Binding Path=manufacturers.name}" Width="10*"/>
+                <DataGridTextColumn Foreground="#060722" Header="Цена" Binding="{Binding Path=cost}" Width="10*"/>
+                <DataGridTextColumn Foreground="#060722" Header="Кол-во,шт." Binding="{Binding Path=count}" Width="10*"/>
+                <DataGridTextColumn Foreground="#060722" Header="Вес,кг" Binding="{Binding Path=weight}" Width="10*"/>
+                <DataGridTextColumn Foreground="#060722" Header="Высота,мм" Binding="{Binding Path=height}" Width="10*"/>
+                <DataGridTextColumn Foreground="#060722" Header="Ширина,мм" Binding="{Binding Path=width}" Width="10*"/>
+                <DataGridTextColumn Foreground="#060722" Header="Длина,мм" Binding="{Binding Path=length}" Width="10*"/>
+                <DataGridTextColumn Foreground="#060722" Header="Место" Binding="{Binding Path=places.name}" Width="10*"/>
+                <DataGridTextColumn Foreground="#060722" Header="Фото" Binding="{Binding Path=image}" Width="10*"/>
             </DataGrid.Columns>
         </DataGrid>
 
-        <StackPanel Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch">
+        <StackPanel Grid.Row="3" Grid.Column="2" HorizontalAlignment="Stretch" Margin="0,0,-0.333,0">
 
-            <Label x:Name="RecordLabel" Content="Добавить Запись" FontSize="16" FontWeight="Medium" Margin="5,0,0,10" Foreground="#fafafa"/>
+            <Label x:Name="RecordLabel" Content="Добавить Запись" FontSize="16" FontWeight="Medium" Margin="5,0,0,0" Foreground="#fafafa"/>
 
-            <Label Content="Название" Margin="5,0,0,0" Foreground="#fafafa"/>
-            <TextBox x:Name="RecordTextBookName" 
-                 Height="35" Margin="20,0,20,0"/>
+            <Label Content="Тип" Margin="5,0,0,0" Foreground="#fafafa"/>
+            <ComboBox x:Name="TypeComboBox"                
+                 Height="30" Width="auto" Margin="20,0,20,0" DisplayMemberPath="name"/>
 
             <Label Content="Модель" Margin="5,0,0,0" Foreground="#fafafa"/>
             <ComboBox x:Name="ModelComboBox"                
-                 Height="35" Width="auto" Margin="20,0,20,0" DisplayMemberPath="name"/>
+                 Height="30" Width="auto" Margin="20,0,20,0" DisplayMemberPath="name"/>
+
+            <Label Content="Название" Margin="5,0,0,0" Foreground="#fafafa"/>
+            <TextBox x:Name="NameTextBox" 
+                 Height="30" Margin="20,0,20,0"/>
+
+            <Label Content="Описание" Margin="5,0,0,0" Foreground="#fafafa"/>
+            <TextBox x:Name="DescriptionTextBox"               
+                 Height="30" Margin="20,0,20,0"/>
 
             <Label Content="Производитель" Margin="5,0,0,0" Foreground="#fafafa"/>
             <ComboBox x:Name="ManufacturerComboBox"                
-                 Height="35" Width="auto" Margin="20,0,20,0" DisplayMemberPath="name"/>
+                 Height="30" Width="auto" Margin="20,0,20,0" DisplayMemberPath="name"/>
 
-            <Label Content="Описание" Margin="5,0,0,0" Foreground="#fafafa"/>
-            <TextBox x:Name="RecordTextGenres"               
-                 Height="35" Margin="20,0,20,0"/>
+            <DockPanel Margin="0,10,0,0">
+                <Label Content="Цена" Margin="5,0,0,0" Foreground="#fafafa"/>
+                <TextBox x:Name="CostTextBox"               
+                 Height="30" Width="80" Margin="15,0,20,0"/>
 
-            <Label Content="Название картинки (jpg)" Margin="5,0,0,0" Foreground="#fafafa"/>
-            <DockPanel>
-
-                <Button x:Name="SelectFileButton" Content="Выбрать" 
-                     Margin="0, 0, 20, 0" Click="SelectFileButton_Click" DockPanel.Dock="Right"/>
-                <TextBox x:Name="RecordTextImage" 
-                 Height="35" Margin="20,0,5,0"/>
+                <Label Content="Кол-во" Margin="0,0,10,0" Foreground="#fafafa"/>
+                <TextBox x:Name="CountTextBox"               
+                 Height="30" Width="70" Margin="-10,0,20,0"/>
             </DockPanel>
 
+            <DockPanel Margin="0,10,0,0">
+                <Label Content="Вес" Margin="5,0,0,0" Foreground="#fafafa"/>
+                <TextBox x:Name="WeightTextBox"               
+                 Height="30" Width="80" Margin="25,0,20,0"/>
+
+                <Label Content="Высота" Margin="0,0,0,0" Foreground="#fafafa"/>
+                <TextBox x:Name="HeightTextBox"               
+                 Height="30" Width="70" Margin="-5,0,15,0"/>
+            </DockPanel>
+            <DockPanel Margin="0,10,0,0">
+                <Label Content="Ширина" Margin="5,0,0,0" Foreground="#fafafa"/>
+                <TextBox x:Name="WidthTextBox"               
+                 Height="30" Width="80" Margin="0,0,20,0"/>
+
+                <Label Content="Длина" Margin="0,0,0,0" Foreground="#fafafa"/>
+                <TextBox x:Name="LengthTextBox"               
+                 Height="30" Width="70" Margin="0,0,15,0"/>
+            </DockPanel>
+            <Label Content="Место" Margin="5,0,0,0" Foreground="#fafafa"/>
+            <ComboBox x:Name="PlaceComboBox"                
+                 Height="30" Width="auto" Margin="20,0,20,0" DisplayMemberPath="name"/>
+
+
+            <Label Content="Изображение ( jpg )" Margin="5,0,0,0" Foreground="#fafafa"/>
+            <DockPanel>
+                <Button Style="{StaticResource MainBtn}" x:Name="SelectFileButton" Content="Выбрать" 
+                     Margin="0, 0, 20, 0" Click="SelectFileButton_Click" DockPanel.Dock="Right"/>
+                <TextBox x:Name="RecordTextImage" Height="35" Margin="20,0,5,0"/>
+            </DockPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,0">
-                <Button x:Name="AddCommit" Content="Добавить запись" 
+                <Button Style="{StaticResource MainBtn}" x:Name="AddCommit" Content="Добавить запись" 
                      Margin="0, 5, 20, 0" Click="AddCommit_Click"/>
-                <Button x:Name="AddRollback" Content="Отменить" 
+                <Button Style="{StaticResource MainBtn}" x:Name="AddRollback" Content="Отменить" 
                      Margin="0, 5, 0, 0" Click="AddRollback_Click"/>
             </StackPanel>
-
         </StackPanel>
-
     </Grid>
 </Page>

@@ -127,8 +127,23 @@
       <DependentUpon>MTWModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SourceCore.cs" />
+    <Compile Include="Warehouse\Pages\WarehouseCountrys.xaml.cs">
+      <DependentUpon>WarehouseCountrys.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Warehouse\Pages\WarehouseManufactures.xaml.cs">
+      <DependentUpon>WarehouseManufactures.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Warehouse\Pages\WarehouseModels.xaml.cs">
+      <DependentUpon>WarehouseModels.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Warehouse\Pages\WarehouseProducts.xaml.cs">
       <DependentUpon>WarehouseProducts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Warehouse\Pages\WarehouseTypes.xaml.cs">
+      <DependentUpon>WarehouseTypes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Warehouse\Pages\WarehouseUsers.xaml.cs">
+      <DependentUpon>WarehouseUsers.xaml</DependentUpon>
     </Compile>
     <Compile Include="Warehouse\WarehouseWindow.xaml.cs">
       <DependentUpon>WarehouseWindow.xaml</DependentUpon>
@@ -152,7 +167,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Warehouse\Pages\WarehouseCountrys.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Warehouse\Pages\WarehouseManufactures.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Warehouse\Pages\WarehouseModels.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Warehouse\Pages\WarehouseProducts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Warehouse\Pages\WarehouseTypes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Warehouse\Pages\WarehouseUsers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -12,11 +12,32 @@ namespace MTW.Warehouse
         public WarehouseWindow()
         {
             InitializeComponent();
+            Frame.Navigate(new Pages.WarehouseProducts());
 
         }
-        private void BookButton_Click(object sender, RoutedEventArgs e)
+        private void ProductsBtn(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(new Pages.WarehouseProducts());
+        }
+        private void ManufacturesBtn(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(new Pages.WarehouseManufactures());
+        }
+        private void CountrysBtn(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(new Pages.WarehouseCountrys());
+        }
+        private void ModelsBtn(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(new Pages.WarehouseModels());
+        }
+        private void TypesBtn(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(new Pages.WarehouseTypes());
+        }
+        private void UsersBtn(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(new Pages.WarehouseUsers());
         }
     }
 }

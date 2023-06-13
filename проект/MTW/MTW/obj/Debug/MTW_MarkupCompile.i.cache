@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\vlad-\OneDrive\Рабочий стол\MTW\проект\MTW\MTW\App.xaml
-51292447908
+10-270506163
 248823173
-23568909388
+28-1833147515
 19423382885
-MainWindows\AuthorizationWindow.xaml;MainWindows\ProductsWindow.xaml;MainWindows\WelcomeWindow.xaml;Warehouse\Pages\WarehouseProducts.xaml;Warehouse\WarehouseWindow.xaml;
+MainWindows\AuthorizationWindow.xaml;MainWindows\ProductsWindow.xaml;MainWindows\WelcomeWindow.xaml;Warehouse\Pages\WarehouseCountrys.xaml;Warehouse\Pages\WarehouseManufactures.xaml;Warehouse\Pages\WarehouseModels.xaml;Warehouse\Pages\WarehouseProducts.xaml;Warehouse\Pages\WarehouseTypes.xaml;Warehouse\Pages\WarehouseUsers.xaml;Warehouse\WarehouseWindow.xaml;
 
 True
 

@@ -5,21 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MTW.Warehouse"
         mc:Ignorable="d"
-        ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        Title="Склад товаров" Height="450" Width="1200" >
+        Background="Transparent"
+        Title="Склад товаров" MinHeight="720" MinWidth="1280" Height="720" Width="1280">
     <Grid>
-        <Grid MaxWidth="1280">
-
+        <Grid.Background>
+            <ImageBrush ImageSource="/images/welcome.jpg" Opacity="0.6"/>
+        </Grid.Background>
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100" MinWidth="160"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*" MinWidth="300"/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0" Height="419" VerticalAlignment="Bottom">
-                <Button x:Name="BookButton" Content="Товары" 
-                    Margin="10, 5, 10, 0" Click="BookButton_Click"/>
+            <StackPanel Grid.Column="0" Height="419" VerticalAlignment="Top">
+                <Button Style="{StaticResource MainBtn}" x:Name="Products" Content="Товары" Margin="10, 5, 10, 0" Click="ProductsBtn"/>
+                <Button Style="{StaticResource MainBtn}" x:Name="Manufactures" Content="Производители" Margin="10, 5, 10, 0" Click="ManufacturesBtn"/>
+                <Button Style="{StaticResource MainBtn}" x:Name="Countrys" Content="Страны" Margin="10, 5, 10, 0" Click="CountrysBtn"/>
+                <Button Style="{StaticResource MainBtn}" x:Name="Models" Content="Модели" Margin="10, 5, 10, 0" Click="ModelsBtn"/>
+                <Button Style="{StaticResource MainBtn}" x:Name="Types" Content="Типы" Margin="10, 5, 10, 0" Click="TypesBtn"/>
+                <Button Style="{StaticResource MainBtn}" x:Name="Users" Content="Аккаунты" Margin="10, 5, 10, 0" Click="UsersBtn"/>
             </StackPanel>
             <Frame x:Name="Frame" Grid.Column="2" Grid.Row="0" NavigationUIVisibility="Hidden" />
         </Grid>

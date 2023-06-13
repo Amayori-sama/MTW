@@ -7,7 +7,7 @@ namespace MTW
 {
     internal class ActionsWithPictures
     {
-        public static string pathImages = @"C:\Users\vlad-\OneDrive\Рабочий стол\BibFond\BibFond\Images\booklab";
+        public static string pathImages = @"";
 
         public static byte[] ConvertImageToBinary(string iFile)
         {
@@ -29,7 +29,7 @@ namespace MTW
                 sqlConnection.Open();
                 SqlCommand sqlCommand = new SqlCommand();
                 sqlCommand.Connection = sqlConnection;
-                //sqlCommand.CommandText = $"SELECT image FROM books WHERE id = {id}"; // наша запись в БД под id=1, поэтому в запросе "WHERE [id] = 1"
+                sqlCommand.CommandText = $"SELECT image FROM products WHERE id = {id}"; // наша запись в БД под id=1, поэтому в запросе "WHERE [id] = 1"
                 SqlDataReader sqlReader = sqlCommand.ExecuteReader();
                 byte[] iTrimByte = null;
                 while (sqlReader.Read()) // считываем и вносим в лист результаты

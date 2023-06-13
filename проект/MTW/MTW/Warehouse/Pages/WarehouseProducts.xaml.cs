@@ -21,15 +21,17 @@ namespace MTW.Warehouse.Pages
             InitializeComponent();
             DataContext = this;
             DlgLoad(false, "");
-            ManufacturerComboBox.ItemsSource = SourceCore.db.manufacturers.ToList();
+            TypeComboBox.ItemsSource = SourceCore.db.types.ToList();
             ModelComboBox.ItemsSource = SourceCore.db.models.ToList();
+            ManufacturerComboBox.ItemsSource = SourceCore.db.manufacturers.ToList();
+            PlaceComboBox.ItemsSource = SourceCore.db.places.ToList();
             UpdateGrid(null);
         }
 
         private void LoadingProd(object sender, RoutedEventArgs e)
         {
             List<string> Columns = new List<string>();
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 12; i++)
             {
                 Columns.Add(PageGrid.Columns[i].Header.ToString());
             }
@@ -52,8 +54,10 @@ namespace MTW.Warehouse.Pages
             PageGrid.ItemsSource = Products;
             PageGrid.ItemsSource = SourceCore.db.products.ToList();
             PageGrid.SelectedItem = product;
-            ManufacturerComboBox.Text = SourceCore.db.manufacturers.ToString();
+            TypeComboBox.Text = SourceCore.db.types.ToString();
             ModelComboBox.Text = SourceCore.db.models.ToString();
+            ManufacturerComboBox.Text = SourceCore.db.manufacturers.ToString();
+            PlaceComboBox.Text = SourceCore.db.places.ToString();
         }
 
         private void DlgLoad(bool b, string DlgModeContent)
@@ -83,10 +87,19 @@ namespace MTW.Warehouse.Pages
 
         private void FillTextBox()
         {
-            RecordTextBookName.Text = SelectedProduct.name;
-            ManufacturerComboBox.Text = SelectedProduct.manufacturers.name.ToString();
+            TypeComboBox.Text = SelectedProduct.types.name.ToString();
             ModelComboBox.Text = SelectedProduct.models.name.ToString();
-
+            NameTextBox.Text = SelectedProduct.name;
+            DescriptionTextBox.Text = SelectedProduct.description.ToString();
+            ManufacturerComboBox.Text = SelectedProduct.manufacturers.name.ToString();
+            CostTextBox.Text = SelectedProduct.cost.ToString();
+            CountTextBox.Text = SelectedProduct.count.ToString();
+            WeightTextBox.Text = SelectedProduct.weight.ToString();
+            HeightTextBox.Text = SelectedProduct.height.ToString();
+            WidthTextBox.Text = SelectedProduct.width.ToString();
+            LengthTextBox.Text = SelectedProduct.length.ToString();
+            PlaceComboBox.Text = SelectedProduct.places.name.ToString();
+            RecordTextImage.Text = SelectedProduct.image.ToString();
         }
 
         private void RecordAdd_Click(object sender, RoutedEventArgs e)
@@ -129,7 +142,6 @@ namespace MTW.Warehouse.Pages
         {
             if (MessageBox.Show("Удалить запись?", "Внимание", MessageBoxButton.OKCancel, MessageBoxImage.Warning) == MessageBoxResult.OK)
             {
-
                 try
                 {
                     // Ссылка на удаляемую книгу
@@ -153,7 +165,6 @@ namespace MTW.Warehouse.Pages
                 }
                 catch
                 {
-
                     MessageBox.Show("Невозможно удалить запись, так как она используется в других справочниках базы данных.",
                     "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning, MessageBoxResult.None);
                 }
@@ -166,16 +177,40 @@ namespace MTW.Warehouse.Pages
             switch (FilterComboBox.SelectedIndex)
             {
                 case 0:
-                    PageGrid.ItemsSource = SourceCore.db.products.Where(q => q.name.Contains(textbox.Text)).ToList();
+                    PageGrid.ItemsSource = SourceCore.db.products.Where(q => q.types.name.ToString().Contains(textbox.Text)).ToList();
                     break;
                 case 1:
                     PageGrid.ItemsSource = SourceCore.db.products.Where(q => q.models.name.ToString().Contains(textbox.Text)).ToList();
                     break;
                 case 2:
-                    PageGrid.ItemsSource = SourceCore.db.products.Where(q => q.manufacturers.name.ToString().Contains(textbox.Text)).ToList();
+                    PageGrid.ItemsSource = SourceCore.db.products.Where(q => q.name.Contains(textbox.Text)).ToList();
                     break;
                 case 3:
-                    PageGrid.ItemsSource = SourceCore.db.products.Where(q => q.description.ToString().Contains(textbox.Text)).ToList();
+                    PageGrid.ItemsSource = SourceCore.db.products.Where(q => q.description.Contains(textbox.Text)).ToList();
+                    break;
+                case 4:
+                    PageGrid.ItemsSource = SourceCore.db.products.Where(q => q.manufacturers.name.ToString().Contains(textbox.Text)).ToList();
+                    break;
+                case 5:
+                    PageGrid.ItemsSource = SourceCore.db.products.Where(q => q.cost.ToString().Contains(textbox.Text)).ToList();
+                    break;
+                case 6:
+                    PageGrid.ItemsSource = SourceCore.db.products.Where(q => q.count.ToString().Contains(textbox.Text)).ToList();
+                    break;
+                case 7:
+                    PageGrid.ItemsSource = SourceCore.db.products.Where(q => q.weight.ToString().Contains(textbox.Text)).ToList();
+                    break;
+                case 8:
+                    PageGrid.ItemsSource = SourceCore.db.products.Where(q => q.height.ToString().Contains(textbox.Text)).ToList();
+                    break;
+                case 9:
+                    PageGrid.ItemsSource = SourceCore.db.products.Where(q => q.width.ToString().Contains(textbox.Text)).ToList();
+                    break;
+                case 10:
+                    PageGrid.ItemsSource = SourceCore.db.products.Where(q => q.length.ToString().Contains(textbox.Text)).ToList();
+                    break;
+                case 11:
+                    PageGrid.ItemsSource = SourceCore.db.products.Where(q => q.places.name.ToString().Contains(textbox.Text)).ToList();
                     break;
             }
         }
@@ -183,25 +218,20 @@ namespace MTW.Warehouse.Pages
         private void AddCommit_Click(object sender, RoutedEventArgs e)
         {
             StringBuilder errors = new StringBuilder();
-
-            if (string.IsNullOrEmpty(RecordTextBookName.Text))
-                errors.AppendLine("Укажите название книги");
-
-            if (((Base.manufacturers)ManufacturerComboBox.SelectedItem == null) || (ManufacturerComboBox.Text == " ..."))
-                errors.AppendLine("Укажите автора");
-
-            if (((Base.models)ModelComboBox.SelectedItem == null) || (ModelComboBox.Text == " ..."))
-                errors.AppendLine("Укажите издательство");
-
-            if (string.IsNullOrEmpty(RecordTextGenres.Text))
-                errors.AppendLine("Укажите описание");
-
-            //if (string.IsNullOrEmpty(RecordTextImage.Text))
-                //errors.AppendLine("Укажите название картинки");
-
-            //string[] buf = RecordTextImage.Text.Split('.');
-            //if (buf[buf.Length - 1] != "jpg")
-                //errors.AppendLine("Укажите название картинки");
+            if (((Base.types)TypeComboBox.SelectedItem == null) || (TypeComboBox.Text == " ...")) errors.AppendLine("Укажите тип");
+            if (((Base.models)ModelComboBox.SelectedItem == null) || (ModelComboBox.Text == " ...")) errors.AppendLine("Укажите модель");
+            if (string.IsNullOrEmpty(NameTextBox.Text)) errors.AppendLine("Укажите название");
+            if (string.IsNullOrEmpty(DescriptionTextBox.Text)) errors.AppendLine("Укажите описание");
+            if (((Base.manufacturers)ManufacturerComboBox.SelectedItem == null) || (ManufacturerComboBox.Text == " ...")) errors.AppendLine("Укажите производителя");
+            if (string.IsNullOrEmpty(CostTextBox.Text)) errors.AppendLine("Укажите цену");
+            if (string.IsNullOrEmpty(CountTextBox.Text)) errors.AppendLine("Укажите количество");
+            if (string.IsNullOrEmpty(WeightTextBox.Text)) errors.AppendLine("Укажите вес");
+            if (string.IsNullOrEmpty(HeightTextBox.Text)) errors.AppendLine("Укажите высоту");
+            if (string.IsNullOrEmpty(WidthTextBox.Text)) errors.AppendLine("Укажите ширину");
+            if (string.IsNullOrEmpty(LengthTextBox.Text)) errors.AppendLine("Укажите длину");
+            if (((Base.places)PlaceComboBox.SelectedItem == null) || (PlaceComboBox.Text == " ...")) errors.AppendLine("Укажите место");
+            string[] buf = RecordTextImage.Text.Split('.');
+            if (buf[buf.Length - 1] != "jpg") errors.AppendLine("Укажите название картинки");
 
             if (errors.Length > 0)
             {
@@ -214,11 +244,19 @@ namespace MTW.Warehouse.Pages
                 try
                 {
                     var NewBase = new Base.products();
-                    NewBase.name = RecordTextBookName.Text.Trim();
+                    NewBase.types = (Base.types)TypeComboBox.SelectedItem;
                     NewBase.models = (Base.models)ModelComboBox.SelectedItem;
+                    NewBase.name = NameTextBox.Text.Trim();
+                    NewBase.description = DescriptionTextBox.Text.Trim();
                     NewBase.manufacturers = (Base.manufacturers)ManufacturerComboBox.SelectedItem;
-                    NewBase.description = RecordTextGenres.Text.Trim();
-                    //NewBase.image = ActionsWithPictures.ConvertImageToBinary(RecordTextImage.Text);
+                    NewBase.cost = decimal.Parse(CostTextBox.Text.Trim());
+                    NewBase.count = int.Parse(CountTextBox.Text.Trim());
+                    NewBase.weight = float.Parse(WeightTextBox.Text.Trim());
+                    NewBase.height = float.Parse(HeightTextBox.Text.Trim());
+                    NewBase.width = float.Parse(WidthTextBox.Text.Trim());
+                    NewBase.length = float.Parse(LengthTextBox.Text.Trim());
+                    NewBase.places = (Base.places)PlaceComboBox.SelectedItem;                    
+                    NewBase.image = ActionsWithPictures.ConvertImageToBinary(RecordTextImage.Text);
                     SourceCore.db.products.Add(NewBase);
                     SelectedProduct = NewBase;
                 }
@@ -233,11 +271,19 @@ namespace MTW.Warehouse.Pages
                 {
                     var EditBase = new Base.products();
                     EditBase = SourceCore.db.products.First(p => p.id == SelectedProduct.id);
-                    EditBase.name = RecordTextBookName.Text.Trim();
+                    EditBase.types = (Base.types)TypeComboBox.SelectedItem;
                     EditBase.models = (Base.models)ModelComboBox.SelectedItem;
+                    EditBase.name = NameTextBox.Text.Trim();
+                    EditBase.description = DescriptionTextBox.Text.Trim();
                     EditBase.manufacturers = (Base.manufacturers)ManufacturerComboBox.SelectedItem;
-                    EditBase.description = RecordTextGenres.Text.Trim();
-                    //EditBase.image = ActionsWithPictures.ConvertImageToBinary(RecordTextImage.Text);
+                    EditBase.cost = decimal.Parse(CostTextBox.Text.Trim());
+                    EditBase.count = int.Parse(CountTextBox.Text.Trim());
+                    EditBase.weight = float.Parse(WeightTextBox.Text.Trim());
+                    EditBase.height = float.Parse(HeightTextBox.Text.Trim());
+                    EditBase.width = float.Parse(WidthTextBox.Text.Trim());
+                    EditBase.length = float.Parse(LengthTextBox.Text.Trim());
+                    EditBase.places = (Base.places)PlaceComboBox.SelectedItem;
+                    EditBase.image = ActionsWithPictures.ConvertImageToBinary(RecordTextImage.Text);
                 }
                 catch (Exception)
                 {
